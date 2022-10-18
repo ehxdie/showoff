@@ -1,0 +1,47 @@
+body::before{
+    display: block;
+    content: '';
+    height: 60px;
+    font-family: 'prata', cursive;
+}
+#navbar {
+    background-color: black;
+}
+.nav-link{
+    color: #c842e9;
+    font-size: 15px;
+    font-family: 'prata', cursive;
+}
+h1{
+    font-size: 30px;
+    font-family: 'prata', cursive;
+}
+table {
+    margin: 0 auto;
+    font-size: large;
+    border: 1px solid black;
+}
+td {
+    background-color: #E4F5D4;
+    border: 1px solid black;
+}
+
+th,
+td {
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    font-weight: lighter;
+}
+
+@media(min-width: 768px)
+{
+    .news-input
+    {
+        width: 50%;
+    }
+}
