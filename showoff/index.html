@@ -58,7 +58,7 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
                           <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img id = 'img1' src="..." class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">Card title</h5>
                               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -114,6 +114,8 @@
                     $.getJSON("film.json",
                         function (data) {
                       var movie = '';
+                      // An array to hold all the image links
+                      imgsrc = [];
           
                       // ITERATING THROUGH OBJECTS
                       $.each(data, function (key, value) {
@@ -134,10 +136,35 @@
                           value.imdbRating + '</td>';
           
                         movie += '</tr>';
+
+                        // Pushed all the 0 index image links to the array
+                        imgsrc.push(value.Images[0])
+
                       });
                       
+                      // Console logged the image array to see if it was filling up
+                      console.log(imgsrc)
+
                       //INSERTING ROWS INTO TABLE
                       $('#table').append(movie);
+
+                      //Created an index varaiable
+                      index = 0
+
+                      //Created a set interval function that repeats every two seconds
+                      //index is increased by 1 in the set interval function
+                      setImagesrc = setInterval(function(){
+                        index += 1
+                        //Got an img tag id and set its source to a value in an imgsrc array
+                        //Because the index value increases by 1 every 2 seconds the src changes
+                        document.getElementById('img1').src = imgsrc[index]
+                        console.log(index)
+                        //If the index value is greater than 10 a clearinterval function is called to ensure it stops repeating
+                        if (index > 10){
+                          clearInterval(setImagesrc)
+                        }
+                       }, 2000);
+
                     });
                   });
                 </script>
